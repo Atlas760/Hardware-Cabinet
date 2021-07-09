@@ -12,8 +12,6 @@ import java.util.*;
 import java.net.URI;
 import javax.validation.Valid;
 
-//CORS only needed for initial tests
-/*@CrossOrigin(origins = "https://dashboard.whatabyte.app")*/
 @RestController
 @RequestMapping("api/menu/items")
 public class ItemController {

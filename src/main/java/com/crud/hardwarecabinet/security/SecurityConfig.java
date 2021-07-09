@@ -1,5 +1,6 @@
 package com.crud.hardwarecabinet.security;
 
+import com.crud.hardwarecabinet.home.LogoutHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -15,6 +16,7 @@ import org.springframework.security.oauth2.jwt.JwtValidators;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -24,6 +26,13 @@ import java.util.List;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final LogoutHandler logoutHandler;
+
+    public SecurityConfig(LogoutHandler logoutHandler) {
+        this.logoutHandler = logoutHandler;
+    }
+
     @Value("${auth0.audience}")
     private String audience;
 
@@ -33,9 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .mvcMatchers(HttpMethod.GET, "/api/menu/items/**").permitAll() // GET requests don't need auth
+                .mvcMatchers(HttpMethod.GET, "/api/menu/items/**", "/").permitAll() // GET requests don't need auth
                 .anyRequest()
                 .authenticated()
+                .and().oauth2Login().and().logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).addLogoutHandler(logoutHandler)
                 .and()
                 .cors()
                 .configurationSource(corsConfigurationSource())
