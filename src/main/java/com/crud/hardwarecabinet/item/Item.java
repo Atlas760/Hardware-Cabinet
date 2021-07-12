@@ -5,27 +5,31 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.*;
 
 public class Item {
-    private final Long id;
+    private Long id;
 
     //Product name parameters: name cannot be empty and must be a human readable string
     @NotNull(message = "name is required")
     @Pattern(regexp="^[a-zA-Z ]+$", message = "name must be a string")
-    private final String name;
+    private String name;
 
     //Product price parameters: price cannot be empty and must be a positive number
     @NotNull(message = "price is required")
     @Positive(message = "price must be positive")
-    private final Long price;
+    private Long price;
 
     //Product description parameters: description cannot be empty and must be a human readable string
     @NotNull(message = "description is required")
     @Pattern(regexp="^[a-zA-Z ]+$", message = "description must be a string")
-    private final String description;
+    private String description;
 
     //Product image parameters: required, must be a URL
     @NotNull(message = "image is required")
     @URL(message = "image must be a URL")
-    private final String image;
+    private String image;
+
+    public Item() {
+
+    }
 
     public Item(
             Long id,

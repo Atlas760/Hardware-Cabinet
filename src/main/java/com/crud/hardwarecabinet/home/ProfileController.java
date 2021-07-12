@@ -24,16 +24,6 @@ public class ProfileController {
     @GetMapping("/profile")
     public String profile(Model model, @AuthenticationPrincipal OidcUser oidcUser) {
         model.addAttribute("profile", oidcUser.getClaims());
-        model.addAttribute("profileJson", claimsToJson(oidcUser.getClaims()));
         return "profile";
-    }
-
-    private String claimsToJson(Map<String, Object> claims) {
-        try {
-            return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(claims);
-        } catch (JsonProcessingException jpe) {
-            log.error("Error parsing claims to JSON", jpe);
-        }
-        return "Error parsing claims to JSON.";
     }
 }

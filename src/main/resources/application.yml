@@ -23,3 +23,5 @@ spring:
           auth0:
             # trailing slash is important!
             issuer-uri: https://dev-9s4t8b-2.eu.auth0.com/
+        jackson:
+          serialization.write_dates_as_timestamps: false
