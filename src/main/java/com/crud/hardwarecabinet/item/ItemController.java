@@ -48,7 +48,7 @@ public class ItemController {
 
     //PUT definition
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('create:items')")
+    @PreAuthorize("hasAuthority('update:items')")
     public ResponseEntity<Item> update(
             @PathVariable("id") Long id,
             @Valid @RequestBody Item updatedItem) {
@@ -69,7 +69,7 @@ public class ItemController {
 
     //DELETE definition
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('create:items')")
+    @PreAuthorize("hasAuthority('delete:items')")
     public ResponseEntity<Item> delete(@PathVariable("id") Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
