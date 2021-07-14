@@ -11,16 +11,27 @@ import java.util.*;
 public class ItemService {
     private final CrudRepository<Item, Long> repository;
 
+    //In-memory store
     public ItemService(CrudRepository<Item, Long> repository) {
         this.repository = repository;
         this.repository.saveAll(defaultItems());
     }
 
+    //List of always available items
     private static List<Item> defaultItems() {
         return List.of(
-                new Item(1L, "Burger", 599L, "Tasty", "https://cdn.auth0.com/blog/whatabyte/burger-sm.png"),
-                new Item(2L, "Pizza", 299L, "Cheesy", "https://cdn.auth0.com/blog/whatabyte/pizza-sm.png"),
-                new Item(3L, "Tea", 199L, "Informative", "https://cdn.auth0.com/blog/whatabyte/tea-sm.png")
+                new Item(1626255836256L, "Bronze Tier PC", 59999L, "CPU Intel Core i5 8400 | GPU Nvidia GeForce GTX 1650 Super",
+                        "https://www.pngfind.com/pngs/m/184-1842836_intel-h310-budget-gaming-desktop-hd-png-download.png"),
+
+                new Item(1626255903636L, "Silver Tier PC", 89999L, "CPU Intel Core i7 9700 | GPU Nvidia GeForce GTX 1660 Super ",
+                        "https://www.hp.com/wcsstore/hpusstore/Treatment/mdps/pavilion-gaming-dt/pavilion_gaming_pc_q3fy19_ksp7_mob2.png"),
+
+                new Item(1626255911989L, "Gold Tier PC", 139999L, "CPU AMD Ryzen 5 3600 | GPU Nvidia GeForce RTX 2070",
+                        "http://media.flixcar.com/f360cdn/Lenovo-51792940-lenovo-tower-legion-t730-hero.png"),
+
+                new Item(1626255921088L, "Platinum Tier PC", 179999L,
+                        "CPU AMD Ryzen 7 3700X | GPU Nvidia GeForce RTX 3070",
+                        "https://vrlatech.com/wp-content/uploads/2019/08/Titan.png")
         );
     }
 

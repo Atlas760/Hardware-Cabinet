@@ -57,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .jwtAuthenticationConverter(jwtAuthenticationConverter());
     }
 
+    //Enable CORS for external source (testing purpose)
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedMethods(List.of(
@@ -71,6 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
+    //Check if both the audience claim and the issuer claim are validated
     JwtDecoder jwtDecoder() {
         OAuth2TokenValidator<Jwt> withAudience = new AudienceValidator(audience);
         OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);

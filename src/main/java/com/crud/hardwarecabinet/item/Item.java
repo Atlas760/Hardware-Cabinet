@@ -9,7 +9,7 @@ public class Item {
 
     //Product name parameters: name cannot be empty and must be a human readable string
     @NotNull(message = "name is required")
-    @Pattern(regexp="^[a-zA-Z ]+$", message = "name must be a string")
+    @Pattern(regexp="^[a-zA-Z0-9_ ][\\\\$#\\\\+{}:\\\\?\\\\.,~@\\\"a-zA-Z0-9 ]*$", message = "name must be a string")
     private String name;
 
     //Product price parameters: price cannot be empty and must be a positive number
@@ -19,7 +19,7 @@ public class Item {
 
     //Product description parameters: description cannot be empty and must be a human readable string
     @NotNull(message = "description is required")
-    @Pattern(regexp="^[a-zA-Z ]+$", message = "description must be a string")
+    @Pattern(regexp="^[a-zA-Z0-9_ ][\\\\$#\\\\+{}:\\\\?\\\\.,~@\\\"a-zA-Z0-9 ]*$", message = "description must be a string")
     private String description;
 
     //Product image parameters: required, must be a URL

@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 import java.util.List;
 import java.util.Objects;
 
+//Custom validator to check the audience
 class AudienceValidator implements OAuth2TokenValidator<Jwt> {
     private final String audience;
 
