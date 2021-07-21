@@ -1,5 +1,5 @@
 Hardware Cabinet is a simple CRUD API used to store electronical products, such as PCs, Smartphones, etc...
-This API also implements OAuth2.0 via GitHub and Google login.
+This API also implements OAuth2.0 via GitHub, Google login and native Spring Security (for testing purposes)
 
 Ideas for future addons:
 
