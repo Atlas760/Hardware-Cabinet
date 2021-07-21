@@ -26,12 +26,15 @@
           <li class="nav-item">
             <a href="/api/menu/items" class="nav-link">Items List</a>
           </li>
+          <li sec:authorize="isAuthenticated()" class="nav-item">
+            <a href="securedPage" class="nav-link">OAuth profile details</a>
+          </li>
         </ul>
         <ul class="navbar-nav d-none d-md-block">
 
           <!-- Login button: show if NOT authenticated -->
           <li sec:authorize="!isAuthenticated()" class="nav-item">
-            <a th:href="@{/oauth2/authorization/auth0}" id="qsLoginBtn" class="btn btn-primary btn-margin">Login</a>
+            <a th:href="securedPage" id="qsLoginBtn" class="btn btn-primary btn-margin">Login</a>
           </li>
           <!-- / Login button -->
 
