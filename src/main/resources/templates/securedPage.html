@@ -9,7 +9,10 @@
 <span th:text="${#authentication.name}"></span><br><br>
 <a href="/">Go Back</a><br>
 <a id="qsLogoutBtn" th:href="@{/logout}" class="dropdown-item">
-    <i class="fas fa-power-off mr-3"></i> Log out
+    <i class="fas fa-power-off mr-3"></i> Log out <br>
+    <a id="qsItemsBtn" th:href="@{/api/menu/items}" class="dropdown-item">
+        <i class="fas fa-power-off mr-3"></i> Items List
+</a>
 </a>
 </body>
 </html>
